@@ -681,11 +681,16 @@ time, mark, audio, video, hr {
   top: 80%;
   font-size: 11px;
   display: none;
+  padding: 8px;
+  z-index: 1000
 }
 
 .menu-opened_active {
+  color: black;
   display: flex;
   align-items: center;
+  flex-direction: column;
+  background-color: white;
 }
 
 .cards {

@@ -16,6 +16,7 @@ const logoClient = document.getElementById('logo-cliente');
 const banner600 = document.getElementById('banner600');
 const banner728 = document.getElementById('banner728');
 const banner50 = document.getElementById('banner50');
+const menuUl = document.getElementById('menu-opened-ul');
 let poi;
 
 /*fetch('./js/data.json')
@@ -187,6 +188,22 @@ const data = [
 const urlParams = new URLSearchParams(window.location.search);
 const paramValue = urlParams.get('client'); // Ejemplo: ?param=gilmar
 
+data.forEach(item => {
+  // Crear un nuevo elemento <li>
+  const li = document.createElement('li');
+
+  // Crear un enlace <a> con el parámetro `client` en la URL
+  const link = document.createElement('a');
+  link.href = `${window.location.origin}${window.location.pathname}?client=${item.param}`;
+  link.textContent = item.name; // Usar el nombre del cliente como texto del enlace
+
+  // Añadir el enlace al <li>
+  li.appendChild(link);
+
+  // Añadir el <li> al menú
+  menuUl.appendChild(li);
+})
+
 if (paramValue) {
   // Filtrar el array 'data' usando el valor del parámetro
   const filteredData = data.filter(item => item.param === paramValue);
@@ -201,13 +218,13 @@ if (paramValue) {
     colorbar.style.color = firstResult['font-color'];
     logoClient.src = firstResult.logo;
     banner50.src = './img/banners/'+firstResult['banner 300x50'];
-    banner600.src = firstResult['banner_300x600'];
-    banner728.src = firstResult['banner_728x90'];
+    banner600.src = './img/banners/'+firstResult['banner_300x600'];
+    banner728.src = './img/banners/'+firstResult['banner_728x90'];
   } else {
     alert('No se encontraró el cliente:', paramValue);
   }
 } else {
-  alert('No se proporcionó el parámetro "cliente" en la URL.');
+  alert('No se proporcionó el parámetro "cliente" en la URL. Añade ?client=nombre a la URL.');
 }
 
 window.addEventListener('scroll', (e) => {
