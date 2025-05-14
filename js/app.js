@@ -13,7 +13,7 @@ const moreInfo = document.querySelectorAll('.more-info a');
 
 let poi;
 
-fetch('./data.json') // Adjust the path if data.json is in a different directory
+fetch('./js/data.json')
   .then(response => {
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
@@ -31,7 +31,7 @@ fetch('./data.json') // Adjust the path if data.json is in a different directory
   .catch(error => {
     console.error('Error loading data.json:', error);
   });
-  
+
 window.addEventListener('scroll', (e) => {
     //console.log(scrollY);
     if(scrollY > 86) {
