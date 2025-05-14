@@ -224,7 +224,7 @@ if (paramValue) {
     alert('No se encontraró el cliente:', paramValue);
   }
 } else {
-  alert('No se proporcionó el parámetro "cliente" en la URL. Añade ?client=nombre a la URL.');
+  console.log('Añade ?client=nombre a la URL o selecciona un cliente del menú.');
 }
 
 window.addEventListener('scroll', (e) => {
