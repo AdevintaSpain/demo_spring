@@ -13,6 +13,25 @@ const moreInfo = document.querySelectorAll('.more-info a');
 
 let poi;
 
+fetch('./data.json') // Adjust the path if data.json is in a different directory
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    return response.json();
+  })
+  .then(data => {
+    console.log('Data loaded:', data);
+
+    // Example: Use the data (modify as needed)
+    data.forEach(item => {
+      console.log(item); // Process each item in the JSON array
+    });
+  })
+  .catch(error => {
+    console.error('Error loading data.json:', error);
+  });
+  
 window.addEventListener('scroll', (e) => {
     //console.log(scrollY);
     if(scrollY > 86) {
